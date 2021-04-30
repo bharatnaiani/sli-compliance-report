@@ -3,11 +3,6 @@ provider:
   name: aws
   stage: dev
   lambdaHashingVersion: 20201221
-  stackTags:
-    ManagedBy: "braulio.megias@asg.com"
-    CreatedBy: "bharat.nainani@asg.com"
-    Name: sli-report
-    Project: product-distribution
   environment:
     DD_API_KEY: ""
     DD_APP_KEY: ""
