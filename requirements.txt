@@ -1,0 +1,5 @@
+datadog
+jinja2
+premailer
+importlib_metadata
+typing_extensions

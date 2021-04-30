@@ -1,0 +1,54 @@
+service: sli-compliance
+provider:
+  name: aws
+  stage: dev
+  lambdaHashingVersion: 20201221
+  stackTags:
+    ManagedBy: "braulio.megias@asg.com"
+    CreatedBy: "bharat.nainani@asg.com"
+    Name: sli-report
+    Project: product-distribution
+  environment:
+    DD_API_KEY: ""
+    DD_APP_KEY: ""
+    FROM_EMAIL: ""
+    TO_EMAIL: ""
+    ENVIRONMENT_NAME: ""
+    USERNAME: ""
+    PASSWORD: ""
+    HOST: ""
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - lambda:InvokeFunction
+        - lambda:InvokeAsync
+      Resource: "*"
+    - Effect: Allow
+      Action:
+        - logs:CreateLogGroup
+        - logs:CreateLogStream
+        - logs:PutLogEvents
+      Resource: "*"
+    - Effect: Allow
+      Action: ses:SendEmail
+      Resource: "*"
+package:
+  exclude:
+    - node_modules/**
+    - package.json
+functions:
+  status-report:
+    handler: main.lambda_handler
+    description: "SLI compliance report"
+    memorySize: 150
+    timeout: 30
+    runtime: python3.8
+    events:
+      - schedule: cron(0 12 1 * ? *)
+plugins:
+  - serverless-python-requirements
+custom:
+  pythonRequirements:
+    pythonBin: python3
+    dockerizePip: non-linux
+    
