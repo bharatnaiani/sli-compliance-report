@@ -17,7 +17,6 @@ serverless plugin install -n serverless-python-requirements
 ```
 ## Deployment into Development/Test Account
 
-First login to development account using `aws-login` script and export the `AWS_PROFILE` and `AWS_DEFAULT_REGION`.
 
 Now to open the serverless.yml file and, add datadog development account API Key, APP Key, TO_EMAIL. 
 
@@ -33,7 +32,6 @@ sls deploy -s dev
 ```
 ## Deployment into Production Account
 
-First login to production account using `aws-login` script and export the `AWS_PROFILE` and `AWS_DEFAULT_REGION`.
 
 Now to open the serverless.yml file and at line 18, add datadog production account API Key
 
